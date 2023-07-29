@@ -37,7 +37,7 @@ agent any
 	  
 	  stage ('Pull-image-server') {
 		steps {
-			sh 'echo pulling image ....')
+			sh 'echo pulling image ....'
 		}
 	  }
 	  
