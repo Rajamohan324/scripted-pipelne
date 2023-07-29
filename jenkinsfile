@@ -1,0 +1,54 @@
+pipeline{
+agent any
+
+	stages {
+	  stage ('Cloning Git') {
+		steps {
+			// let's make sure we have the repository cloned to our workspace
+			checkout scm
+		}
+		
+	  }
+	  
+	  stage ('SAST scan') {
+		steps {
+			sh 'echo SAST stage'
+		}
+	  }
+	  
+	  stage ('Buil-and-Tag') {
+	  /* This builds the actual image; synonymous to * docker build on the command line */
+			steps {	
+				sh 'echo Build and Tag'
+		}
+	  }
+	  
+	  stage ('Post-to-Dockerhub') {
+		steps {
+			sh 'echo post to dockerhub repo'
+		}
+	  }
+	  
+	  stage (' Security-Image-Scanner') {
+		steps {
+			sh 'echo Scan image for security vulns'
+		}
+	  }
+	  
+	  stage ('Pull-image-server') {
+		steps {
+			sh 'echo pulling image ....')
+		}
+	  }
+	  
+	  stage ('DAST') {
+		steps {
+			sh 'echo DAST scan for security vulns'
+		}
+	  }
+	
+	}
+
+
+
+}
